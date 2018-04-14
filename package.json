@@ -1,6 +1,6 @@
 {
   "name": "summery-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "summery脚手架工具",
   "main": "index.js",
   "scripts": {
