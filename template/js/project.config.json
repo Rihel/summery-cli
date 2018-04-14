@@ -5,5 +5,10 @@
     "config":{
       "extension":"pug"
     }
-  }
+	},
+	"static":{
+		"config":{
+			"dir":"static"
+		}
+	}
 }
