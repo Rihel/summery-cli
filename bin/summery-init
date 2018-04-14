@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+
+const chalk = require('chalk');
+const inquirer = require('inquirer');
+const generator = require('../lib/index');
+inquirer.prompt([
+  {
+    type: 'input',
+    message: '项目名称？',
+    default: 'summery-project',
+    name: 'projectName'
+  }])
+  .then(function (answers) {
+    generator(answers);
+  })

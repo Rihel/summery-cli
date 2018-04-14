@@ -1,0 +1,9 @@
+{
+  "controller":"controller",
+  "views":{
+    "dirname":"views",
+    "config":{
+      "extension":"pug"
+    }
+  }
+}
