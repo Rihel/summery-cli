@@ -1,6 +1,6 @@
 {
   "name": "summery-cli",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "summery脚手架工具",
   "main": "index.js",
   "scripts": {
@@ -24,7 +24,6 @@
     "summery": "bin/summery"
   },
   "author": "rihel",
-  "license": "ISC",
   "dependencies": {
     "chalk": "^2.3.2",
     "commander": "^2.15.1",
