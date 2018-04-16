@@ -6,6 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rihel/summery-cli.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rihel/summery-cli/issues"
+  },
+  "homepage": "https://github.com/Rihel/summery-cli#readme",
   "keywords": [
     "cli",
     "summery",
