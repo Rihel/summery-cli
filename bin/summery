@@ -3,9 +3,14 @@ const program = require('commander');
 const pkg = require('../package.json');
 const version = pkg.version;
 
-// console.log(program)
+
 program
   .version(version)
   .usage('<command> [options]')
-  .command('init', '创建一个summery项目')
+	.command('init', '创建一个summery项目')
+	.option('-i,--init','创建一个summery项目')
   .parse(process.argv);
+
+if(program.init){
+	require('./summery-init');	
+}
