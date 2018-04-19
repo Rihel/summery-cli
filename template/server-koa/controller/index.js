@@ -4,7 +4,7 @@ import { Context } from 'koa';
 class Index{
 
   @Get('/')
-  public async index(ctx:Context,next:()=>Promise<any>){
+  async index(ctx,next){
       await ctx.render('index',{
         title:'首页'
       })

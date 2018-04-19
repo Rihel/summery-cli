@@ -3,27 +3,49 @@
 const chalk = require('chalk');
 const inquirer = require('inquirer');
 const ServerGenerator = require('../lib/server-koa');
-const ClientGenerator = require('../lib/client-react')
-console.log(12312);
-inquirer.prompt([
-  {
-    type: 'input',
-    message: '项目名称？',
-    default: 'summery-project',
-    name: 'projectName'
-  }, {
-    type: 'list',
-    message: 'server or client',
-    default: 'server',
-    choices: [
-      'server', 'client'
-    ],
-    name: 'type'
-  }
-]).then((answers) => {
-  if (answers.type === 'server') {
-    ServerGenerator(answers);
-  } else if (answers.type === 'client') {
-    ClientGenerator(answers);
-  }
-})
+const ClientRectGenerator = require('../lib/client-react');
+(async () => {
+	const {
+		type,
+		projectName
+	} = await inquirer.prompt([{
+		type: 'input',
+		message: '项目名称？',
+		default: 'summery-project',
+		name: 'projectName'
+	}, {
+		type: 'list',
+		message: 'server or client',
+		default: 'server',
+		choices: [
+			'server', 'client'
+		],
+		name: 'type'
+	}]);
+
+
+	if (type === 'server') {
+		ServerGenerator(projectName);
+	}else{
+		await	clientMain(projectName);
+	}
+
+
+	
+})();
+
+async function clientMain(name){
+	const {
+		fw
+	} = await inquirer.prompt([{
+		name: 'fw',
+		type: 'list',
+		message: '框架选择',
+		choices: ['react'],
+	}]);
+	switch (fw) {
+		case 'react':
+			ClientRectGenerator(name);
+			break;
+	}
+}
