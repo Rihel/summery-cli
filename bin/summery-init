@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const inquirer = require('inquirer');
 const ServerGenerator = require('../lib/server-koa');
 const ClientRectGenerator = require('../lib/client-react');
+const ClientMpJqueryGenerator = require('../lib/client-mp-jquery');
 (async () => {
 	const {
 		type,
@@ -41,11 +42,14 @@ async function clientMain(name){
 		name: 'fw',
 		type: 'list',
 		message: '框架选择',
-		choices: ['react'],
+		choices: ['react','无框架多页面，配置jquery'],
 	}]);
 	switch (fw) {
 		case 'react':
 			ClientRectGenerator(name);
+			break;
+		case '无框架多页面，配置jquery':
+			ClientMpJqueryGenerator(name);
 			break;
 	}
 }

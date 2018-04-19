@@ -3,9 +3,11 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const cleanWebpackPlugin = require('clean-webpack-plugin');
 const {r, projectPath, buildPath} = require('./util');
+const  { enters ,views } = require('../pages')
 module.exports = {
   entry: {
-    app: r(projectPath, './index.js')
+		...enters,
+		commons:[r(projectPath,'./common/index.js'),'jquery']
   },
   output: {
     filename: 'js/[name].js',
@@ -19,6 +21,9 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader'
       }, {
+				test:/\.(pug|jade)$/,
+				loader:'pug-loader'
+			},{
         test: /\.(png|jpg|jpeg|gif|svg)/,
         use: {
           loader: 'url-loader',
@@ -40,6 +45,19 @@ module.exports = {
 				]
 			},
     ]
+	},
+	optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          chunks: 'initial',
+          minChunks: 2,
+          maxInitialRequests: 5,
+          minSize: 0,
+          name: 'commons'
+        }
+      }
+    }
   },
   resolve:{
 		extensions: [ '.js', '.json', '.css','.jsx','.scss'],
@@ -48,6 +66,11 @@ module.exports = {
 			'@':r(projectPath,'./components'),
 			'service':r(projectPath,'./service'),
 		}
-  },
-  plugins: [new MiniCssExtractPlugin({filename: "css/[name].css", chunkFilename: "css/[name].[hash].css"})]
+	},
+	
+	plugins: [new MiniCssExtractPlugin({filename: "css/[name].css", chunkFilename: "css/[name].[hash].css"}),...views,
+	new webpack.ProvidePlugin({
+		$: "jquery",
+		jQuery: "jquery"
+	})]
 }

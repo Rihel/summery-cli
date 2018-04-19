@@ -1,0 +1,23 @@
+//响应式背景图片处理宏
+@mixin bgImage($name) {
+    @media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio:2) {
+        //两倍图
+        background-image: url("../img/#{$name}@2x.png");
+    }
+    @media (-webkit-min-device-pixel-ratio:3),
+    (min-device-pixel-ratio:3) {
+        //三倍图
+        background-image: url("../img/#{$name}@3x.png");
+    }
+    background-image: url("../img/#{$name}.png");
+}
+//移动端按钮颜色宏
+@mixin btncolor($color){
+	color: $color;
+	-webkit-text-fill-color: $color;
+}
+
+//px to rem 函数
+@function px2rem($num){
+	@return $num / 75rem;
+}
