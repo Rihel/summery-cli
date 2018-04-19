@@ -12,9 +12,6 @@ export default class Home extends Component {
   constructor (props) {
     super(props)
   }
-  componentDidMount(){
-    console.log(this.props.count);
-  }
   render() {
     return (
       <div>

@@ -27,11 +27,27 @@ module.exports = {
             limit: 5 * 1024,
           }
         }
-      }
+			},
+			{
+				test: /\.(eot|svg|ttf|woff|woff2)\w*/,
+				use:[
+					{
+						loader: 'url-loader',
+						options:{
+							limit:10 * 1024,
+						}
+					}
+				]
+			},
     ]
   },
   resolve:{
-    extensions: [ '.js', '.json', '.css','.jsx','.scss']
+		extensions: [ '.js', '.json', '.css','.jsx','.scss'],
+		alias:{
+			'img':r(projectPath,'./assets/img'),
+			'@':r(projectPath,'./components'),
+			'service':r(projectPath,'./service'),
+		}
   },
   plugins: [new MiniCssExtractPlugin({filename: "css/[name].css", chunkFilename: "css/[id].[hash].css"})]
 }

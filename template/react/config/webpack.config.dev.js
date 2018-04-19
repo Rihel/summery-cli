@@ -1,5 +1,5 @@
 const webpackBaseConfig = require('./webpack.config.base');
-const {merge,r,rootPath} = require('./util');
+const {merge,r,rootPath,projectPath} = require('./util');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = merge(webpackBaseConfig, {
@@ -22,7 +22,12 @@ module.exports = merge(webpackBaseConfig, {
     rules:[
       {
         test: /\.(css|scss)$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", 'scss-loader', 'postcss-loader']
+        use: [MiniCssExtractPlugin.loader, "css-loader", {
+					loader:'sass-loader',
+					options:{
+						includePaths:r(projectPath,'./assets/scss')
+					}
+				}, 'postcss-loader']
       }
     ]
   },
