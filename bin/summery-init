@@ -2,7 +2,8 @@
 
 const chalk = require('chalk');
 const inquirer = require('inquirer');
-const generator = require('../lib/index');
+const ServerGenerator = require('../lib/server-koa');
+const ClientGenerator = require('../lib/client-react')
 console.log(12312);
 inquirer.prompt([
   {
@@ -10,7 +11,19 @@ inquirer.prompt([
     message: '项目名称？',
     default: 'summery-project',
     name: 'projectName'
-  }])
-  .then( (answers)=> {
-    generator(answers);
-  })
+  }, {
+    type: 'list',
+    message: 'server or client',
+    default: 'server',
+    choices: [
+      'server', 'client'
+    ],
+    name: 'type'
+  }
+]).then((answers) => {
+  if (answers.type === 'server') {
+    ServerGenerator(answers);
+  } else if (answers.type === 'client') {
+    ClientGenerator(answers);
+  }
+})

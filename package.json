@@ -1,11 +1,20 @@
 {
   "name": "summery-cli",
-  "version": "0.0.6",
+  "version": "0.0.9",
   "description": "summery脚手架工具",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rihel/summery-cli.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rihel/summery-cli/issues"
+  },
+  "homepage": "https://github.com/Rihel/summery-cli#readme",
   "keywords": [
     "cli",
     "summery",
@@ -15,7 +24,6 @@
     "summery": "bin/summery"
   },
   "author": "rihel",
-  "license": "ISC",
   "dependencies": {
     "chalk": "^2.3.2",
     "commander": "^2.15.1",
