@@ -30,10 +30,10 @@ const config = merge(webpackBaseConfig, {
               minimize: true
             }
           },
-          {
-						loader:'sass-loader',
-						options:{
-							includePaths:r(projectPath,'./assets/scss')
+					{
+						loader: 'sass-loader',
+						options: {
+							includePaths: [r(projectPath, './assets/scss')]
 						}
 					},
           'postcss-loader'

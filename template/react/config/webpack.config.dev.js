@@ -22,10 +22,13 @@ module.exports = merge(webpackBaseConfig, {
     rules:[
       {
         test: /\.(css|scss)$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", {
-					loader:'sass-loader',
-					options:{
-						includePaths:r(projectPath,'./assets/scss')
+        use: [
+					MiniCssExtractPlugin.loader, 
+					"css-loader", 
+				{
+					loader: 'sass-loader',
+					options: {
+						includePaths: [r(projectPath, './assets/scss')]
 					}
 				}, 'postcss-loader']
       }
