@@ -1,12 +1,14 @@
-import { Controller , Get } from 'summery';
-import { Context } from 'koa';
+import { Get,Controller, Required } from "../lib/decorators";
+
+
+
 @Controller('/')
 class Index{
 
   @Get('/')
   async index(ctx,next){
-      await ctx.render('index',{
-        title:'首页'
-      })
+    ctx.body={
+      a:2
+    }
   }
 }

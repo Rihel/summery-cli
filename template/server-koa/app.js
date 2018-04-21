@@ -1,29 +1,19 @@
-import {Summery} from 'summery';
+import Koa from 'koa';
+import { loadAllScriptFileOnDir } from './util';
 
 
+;(async ()=>{
 
-const app = new Summery({
-  controller:'controller',
-  static:{
-    config:{
-      dirname:'static'
-    }
-  },
-  views:{
-    dirname:'views',
-    config:{
-      extension:'pug'
-    }
-  },
-  session:{
-		keys:['summery'],
-		config:{
-			maxAge:60000,
-			key:"summery"
-		}
-	},
-});
+  const app = new Koa();
 
-app.start(3000,()=>{
-  console.log('server is running in 3000 port');
-})
+  let chunks = loadAllScriptFileOnDir('middlewares');
+  chunks.forEach(chunk=>{
+    chunk.default(app);
+  });
+
+  app.listen(3000,()=>{
+    console.log('server is running in 3000 port');
+  })
+
+})();
+
