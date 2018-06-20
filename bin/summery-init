@@ -3,6 +3,7 @@
 const chalk = require('chalk');
 const inquirer = require('inquirer');
 const ServerGenerator = require('../lib/server-koa');
+const FullStack = require('../lib/vuessr-full-stack')
 const ClientRectGenerator = require('../lib/client-react');
 const ClientMpJqueryGenerator = require('../lib/client-mp-jquery');
 (async () => {
@@ -19,7 +20,7 @@ const ClientMpJqueryGenerator = require('../lib/client-mp-jquery');
 		message: 'server or client',
 		default: 'server',
 		choices: [
-			'server', 'client'
+			'server', 'client','full-stack'
 		],
 		name: 'type'
 	}]);
@@ -27,7 +28,9 @@ const ClientMpJqueryGenerator = require('../lib/client-mp-jquery');
 
 	if (type === 'server') {
 		ServerGenerator(projectName);
-	}else{
+	} else if(type === 'full-stack'){
+    FullStack(projectName);
+  }else{
 		await	clientMain(projectName);
 	}
 

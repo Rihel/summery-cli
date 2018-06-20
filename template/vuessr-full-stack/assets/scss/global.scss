@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-weight: normal;
+  font-style: normal;
+  font-size: inherit;
+  color: inherit;
+  list-style: none;
+  box-sizing: border-box;
+  @include after {
+    box-sizing: border-box;
+  }
+  @include before {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  font-size: 12px;
+  color: #000;
+  line-height: 1;
+}
+
+input,
+textarea,
+button,
+select {
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  outline: none;
+}
+button,input[type="button"],input[type="submit"],input[type="reset"]{
+  cursor: pointer;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+img {
+  vertical-align: middle;
+}
+
+a {
+  color: inherit;
+  font-size: inherit;
+}
+
+.pull {
+  &-left {
+    float: left;
+  }
+  &-right {
+    float: right;
+  }
+}
+
+.container {
+  width: 1200px;
+  @include blockCenter;
+}

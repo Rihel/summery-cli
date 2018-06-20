@@ -1,0 +1,21 @@
+@mixin after {
+  &::after{
+    @content;
+  }
+}
+@mixin before {
+  &::before{
+    @content;
+  }
+}
+@mixin clearfix {
+  @include after{
+    content: '';
+    clear: both;
+    display: block;
+  }
+}
+@mixin blockCenter {
+  margin-left: auto;
+  margin-right: auto;
+}
