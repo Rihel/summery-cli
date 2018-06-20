@@ -6,6 +6,7 @@ const ServerGenerator = require('../lib/server-koa');
 const FullStack = require('../lib/vuessr-full-stack')
 const ClientRectGenerator = require('../lib/client-react');
 const ClientMpJqueryGenerator = require('../lib/client-mp-jquery');
+const ClientThreeGenerator = require('../lib/client-three');
 (async () => {
 	const {
 		type,
@@ -45,7 +46,7 @@ async function clientMain(name){
 		name: 'fw',
 		type: 'list',
 		message: '框架选择',
-		choices: ['react','无框架多页面，配置jquery'],
+		choices: ['react','无框架多页面，配置jquery','threejs项目'],
 	}]);
 	switch (fw) {
 		case 'react':
@@ -53,6 +54,9 @@ async function clientMain(name){
 			break;
 		case '无框架多页面，配置jquery':
 			ClientMpJqueryGenerator(name);
+			break;
+		case 'threejs项目':
+			ClientThreeGenerator(name);
 			break;
 	}
 }
