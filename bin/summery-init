@@ -21,7 +21,7 @@ const ClientThreeGenerator = require('../lib/client-three');
 		message: 'server or client',
 		default: 'server',
 		choices: [
-			'server', 'client', 'full-stack'
+			'server', 'client','full-stack'
 		],
 		name: 'type'
 	}]);
